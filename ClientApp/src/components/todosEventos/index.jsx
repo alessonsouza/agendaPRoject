@@ -8,7 +8,8 @@ import {
   Fab,
   Card,
   Divider,
-  Paper
+  Paper,
+  CardContent
 } from '@material-ui/core'
 
 import {
@@ -20,6 +21,7 @@ import {
   TablePagination,
   TableRow
 } from '@mui/material'
+import { visuallyHidden } from '@mui/utils'
 
 import MailIcon from '@material-ui/icons/Event'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
@@ -29,6 +31,7 @@ import timezone from 'dayjs/plugin/timezone'
 import APIEventos from '../../lib/api/eventos'
 import 'react-multi-carousel/lib/styles.css'
 import '../../assets/css/unimed.css'
+import './index.css'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
 
@@ -351,57 +354,51 @@ const AllEvents = (props) => {
   return (
     <div className={classes.root}>
       <Box>
-        <Box>
+        <div className="col-md-12">
+          <Divider style={{ backgroundColor: 'black', marginBottom: '5px' }} />
+        </div>
+        <div className="row">
           <div className="col-md-12">
-            <Divider
-              style={{ backgroundColor: 'black', marginBottom: '5px' }}
-            />
-          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <TableContainer>
-                <Table
-                  sx={{ minWidth: 750 }}
-                  aria-labelledby="tableTitle"
-                  size="medium">
-                  <TableBody>
-                    {/* if you don't need to support IE11, you
+            <TableContainer>
+              <Table aria-labelledby="tableTitle" size="medium">
+                <TableBody>
+                  {/* if you don't need to support IE11, you
                         can replace the `stableSort` call with:
                     rows.slice().sort(getComparator(order, orderBy)) */}
-                    {events &&
-                      stableSort(events, getComparator(order, orderBy))
-                        .slice(
-                          page * rowsPerPage,
-                          page * rowsPerPage + rowsPerPage
-                        )
-                        .map((row) => {
-                          return (
-                            <Box
-                              p={2}
-                              style={{
-                                backgroundColor: '#7fffd43b',
-                                width: '100%'
-                              }}>
-                              <Paper elevation={5} style={{ height: '100%' }}>
-                                <Card
-                                  key={row.title}
-                                  style={{
-                                    width: '100%',
-                                    backgroundColor: 'rgb(13, 74, 40)',
-                                    padding: '2.5px'
-                                  }}>
-                                  <div className="row">
-                                    <div className="col-md-2 text-center">
-                                      <img
-                                        alt={row.rg_title}
-                                        // eslint-disable-next-line max-len
-                                        src={`${endpoint.UserBaseUrl}/events/image/${row?.rg_document}`}
-                                        ref={customerLogo}
-                                        height="140px"
-                                        width="150px"
-                                        className="position-relative"
-                                      />
-                                      {/* <div
+                  {events &&
+                    stableSort(events, getComparator(order, orderBy))
+                      .slice(
+                        page * rowsPerPage,
+                        page * rowsPerPage + rowsPerPage
+                      )
+                      .map((row) => {
+                        return (
+                          <Box
+                            p={2}
+                            style={{
+                              backgroundColor: '#7fffd43b',
+                              width: '100%'
+                            }}>
+                            <Paper elevation={5} style={{ height: '100%' }}>
+                              <Card
+                                key={row.title}
+                                style={{
+                                  width: '100%',
+                                  backgroundColor: 'rgb(13, 74, 40)',
+                                  padding: '2.5px'
+                                }}>
+                                <div className="row">
+                                  <div className="col-md-2 text-left">
+                                    <img
+                                      alt={row.rg_title}
+                                      // eslint-disable-next-line max-len
+                                      src={`${endpoint.UserBaseUrl}/events/image/${row?.rg_document}`}
+                                      ref={customerLogo}
+                                      height="180px"
+                                      width="180px"
+                                      className="position-relative"
+                                    />
+                                    {/* <div
                                         className="row"
                                         style={{
                                           marginTop: '7%',
@@ -430,112 +427,113 @@ const AllEvents = (props) => {
                                           </Typography>
                                         </div>
                                       </div> */}
-                                    </div>
-                                    <div className="col-md-8 b">
-                                      <Typography
-                                        style={{
-                                          fontWeight: 600,
-                                          color: 'white'
-                                        }}
-                                        gutterBottom
-                                        variant="h4">
-                                        {row.rg_title}
-                                      </Typography>
-                                      <Typography
-                                        display="block"
-                                        variant="body2"
-                                        color="secondary"
-                                        style={{
-                                          width: '100%',
-                                          color: 'white',
-                                          textAlign: 'justify'
-                                        }}>
-                                        {row.rg_description.substr(0, 400)} ...
-                                      </Typography>
-                                    </div>
-                                    <div
-                                      className="col-md-2"
+                                  </div>
+                                  <div className="col-md-8 b text-left">
+                                    <Typography
                                       style={{
-                                        marginTop: '1%',
-                                        bottom: '10%'
+                                        fontWeight: 600,
+                                        color: 'white'
+                                      }}
+                                      gutterBottom
+                                      variant="h4">
+                                      {row.rg_title}
+                                    </Typography>
+                                    <Typography
+                                      display="block"
+                                      variant="body2"
+                                      color="secondary"
+                                      style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        textAlign: 'justify',
+                                        padding: '2%',
+
+                                        wordWrap: 'break-word'
                                       }}>
-                                      {/* <div className="col-md-1 cor-laranja">
+                                      {row.rg_description.substr(0, 400)} ...
+                                    </Typography>
+                                  </div>
+                                  <div
+                                    className="col-md-2"
+                                    style={{
+                                      marginTop: '1%',
+                                      bottom: '10%'
+                                    }}>
+                                    {/* <div className="col-md-1 cor-laranja">
                                       </div> */}
-                                      <div className="col-md-11">
-                                        <Typography
-                                          variant="body2"
-                                          style={{ color: 'white' }}>
-                                          <MailIcon className="cor-laranja" />
-                                          {` ${dayjs(row.rg_date_begin).format(
-                                            'DD/MM/YYYY HH:mm'
-                                          )}`}
-                                        </Typography>
-                                      </div>
-                                      {/* <div className="col-md-1 cor-laranja">
+                                    <div className="col-md-11">
+                                      <Typography
+                                        variant="body2"
+                                        style={{ color: 'white' }}>
+                                        <MailIcon className="cor-laranja" />
+                                        {` ${dayjs(row.rg_date_begin).format(
+                                          'DD/MM/YYYY HH:mm'
+                                        )}`}
+                                      </Typography>
+                                    </div>
+                                    {/* <div className="col-md-1 cor-laranja">
                                         <LocationOnIcon />
                                       </div> */}
-                                      <div className="col-md-10">
-                                        <Typography
-                                          variant="body2"
-                                          style={{ color: 'white' }}>
-                                          <LocationOnIcon className="cor-laranja" />
-                                          {` ${row.rg_local}`}
-                                        </Typography>
-                                      </div>
-                                    </div>
-
-                                    <div className="col-md-12 text-end">
-                                      <Fab
-                                        variant="extended"
-                                        size="small"
-                                        style={{
-                                          backgroundColor: '#b9d300'
-                                        }}
-                                        onClick={() =>
-                                          props.HandleShow('saibamais', row)
-                                        }>
-                                        <Typography
-                                          style={{ fontSize: '10px' }}>
-                                          saiba mais
-                                        </Typography>
-                                        <ChevronRightIcon
-                                          className={classes.listItem}
-                                        />
-                                      </Fab>
+                                    <div className="col-md-10">
+                                      <Typography
+                                        variant="body2"
+                                        style={{ color: 'white' }}>
+                                        <LocationOnIcon className="cor-laranja" />
+                                        {` ${row.rg_local}`}
+                                      </Typography>
                                     </div>
                                   </div>
-                                </Card>
-                              </Paper>
-                            </Box>
-                          )
-                        })}
 
-                    {emptyRows > 0 && (
-                      <TableRow
-                        style={{
-                          height: 53 * emptyRows
-                        }}>
-                        <TableCell colSpan={6} />
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-              <TablePagination
-                rowsPerPageOptions={[3, 5, 10]}
-                component="div"
-                count={events.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onPageChange={handleChangePage}
-                onRowsPerPageChange={handleChangeRowsPerPage}
-              />
-            </div>
+                                  <div className="col-md-12 text-end">
+                                    <Fab
+                                      variant="extended"
+                                      size="small"
+                                      style={{
+                                        backgroundColor: '#b9d300'
+                                      }}
+                                      onClick={() =>
+                                        props.HandleShow('saibamais', row)
+                                      }>
+                                      <Typography style={{ fontSize: '10px' }}>
+                                        saiba mais
+                                      </Typography>
+                                      <ChevronRightIcon
+                                        className={classes.listItem}
+                                      />
+                                    </Fab>
+                                  </div>
+                                </div>
+                              </Card>
+                            </Paper>
+                          </Box>
+                        )
+                      })}
+
+                  {emptyRows > 0 && (
+                    <TableRow
+                      style={{
+                        height: 53 * emptyRows
+                      }}>
+                      <TableCell colSpan={6} />
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={events.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+            />
           </div>
-          <div className="col-md-12">
-            <Divider style={{ backgroundColor: 'black', marginTop: '25px' }} />
-          </div>
-        </Box>
+        </div>
+        <div className="col-md-12">
+          <Divider style={{ backgroundColor: 'black', marginTop: '25px' }} />
+        </div>
       </Box>
     </div>
   )

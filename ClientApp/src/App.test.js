@@ -7,7 +7,7 @@ it('renders without crashing', async () => {
   const div = document.createElement('div');
   ReactDOM.render(
     <MemoryRouter>
-      <App className="position-absolute" />
+      <App />
     </MemoryRouter>, div);
   await new Promise(resolve => setTimeout(resolve, 1000));
 });

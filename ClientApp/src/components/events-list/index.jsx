@@ -40,6 +40,7 @@ import {
   Tooltip,
   Stack
 } from '@mui/material'
+import { visuallyHidden } from '@mui/utils'
 // import Badge from '@material-ui/core/Badge'
 import Badge from 'react-bootstrap/Badge'
 // import Checkbox from '@mui/material/Checkbox';
@@ -47,8 +48,9 @@ import Badge from 'react-bootstrap/Badge'
 // import Tooltip from '@mui/material/Tooltip'
 import { Alert, AlertTitle } from '@material-ui/lab'
 import FilterListIcon from '@mui/icons-material/FilterList'
-import { visuallyHidden } from '@mui/utils'
+
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
 
 import MuiAlert from '@material-ui/lab/Alert'
@@ -282,6 +284,7 @@ EnhancedTableToolbar.propTypes = {
 }
 
 export default function EnhancedTable () {
+  dayjs.extend(utc)
   dayjs.extend(timezone)
   const [order, setOrder] = useState('asc')
   const [orderBy, setOrderBy] = useState('calories')
@@ -372,12 +375,14 @@ export default function EnhancedTable () {
   const HandleEvents = async () => {
     const campos = {}
     if (filtros.rg_date_begin !== null) {
-      campos.rg_date_begin = dayjs(filtros.rg_date_begin).tz(
-        'America/Sao_Paulo'
-      )
+      campos.rg_date_begin = dayjs(filtros.rg_date_begin)
+        .tz('America/Sao_Paulo')
+        .format()
     }
     if (filtros.rg_date_end !== null) {
-      campos.rg_date_end = dayjs(filtros.rg_date_end).tz('America/Sao_Paulo')
+      campos.rg_date_end = dayjs(filtros.rg_date_end)
+        .tz('America/Sao_Paulo')
+        .format()
     }
     campos.rg_description = filtros.rg_description
     campos.rg_title = filtros.rg_title
@@ -515,12 +520,11 @@ export default function EnhancedTable () {
                 </div>
                 {/* <div className="col-md-1 text-end"> */}
                 <Fab
-                  // className="ml-25 mt-2"
                   size="large"
                   style={{
-                    backgroundColor: '#005128',
-                    bottom: '50px',
-                    left: '30px'
+                    backgroundColor: '#005128'
+                    // bottom: '50px',
+                    // left: '30px'
                   }}
                   onClick={() => HandleEvents()}>
                   <Icon
@@ -534,9 +538,9 @@ export default function EnhancedTable () {
                   // className="ml-25 mt-2"
                   size="large"
                   style={{
-                    backgroundColor: '#f5781e',
-                    bottom: '50px',
-                    left: '34px'
+                    backgroundColor: '#f5781e'
+                    // bottom: '50px',
+                    // left: '34px'
                   }}
                   onClick={() => HandleRender(true)}
                   // onClick={AceitarTermo}
@@ -552,15 +556,12 @@ export default function EnhancedTable () {
               </div>
             </CardContent>
           </Card>
-          <Card style={{ marginBottom: '15px', height: '600px' }}>
+          <Card style={{ marginBottom: '15px' }}>
             <CardContent>
               <Paper sx={{ width: '100%', mb: 2, height: '100%' }}>
                 {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
                 <TableContainer>
-                  <Table
-                    sx={{ minWidth: 750 }}
-                    aria-labelledby="tableTitle"
-                    size="medium">
+                  <Table aria-labelledby="tableTitle" size="medium">
                     <EnhancedTableHead
                       numSelected={selected.length}
                       order={order}
@@ -706,7 +707,7 @@ export default function EnhancedTable () {
                       {emptyRows > 0 && (
                         <TableRow
                           style={{
-                            height: 53 * emptyRows
+                            height: 33 * emptyRows
                           }}>
                           <TableCell colSpan={6} />
                         </TableRow>

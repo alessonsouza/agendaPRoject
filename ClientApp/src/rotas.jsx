@@ -4,7 +4,10 @@ import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import { ThemeProvider, createTheme } from '@material-ui/core'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
+import parser from 'ua-parser-js'
+import mediaQuery from 'css-mediaquery'
 import PrivateRoute from './components/routes/private-route'
 import DefaultRoute from './components/routes/public-route'
 import FreeRoute from './components/routes/free-route'
@@ -24,12 +27,17 @@ import Login from './components/layout/login'
 
 const Rotas = (props) => {
   const darkMode = false
+  const matches = useMediaQuery('(min-width:600px)')
 
+  const ssrMatchMedia = (query) => ({
+    matches: mediaQuery.match(query, {
+      // The estimated CSS width of the browser.
+      width: 800
+    })
+  })
   const theme = createTheme({
-    spacing: 6,
+    spacing: 8,
 
-    width: '100%',
-    height: '100%',
     palette: {
       type: darkMode ? 'dark' : 'light',
       primary: {
@@ -43,7 +51,11 @@ const Rotas = (props) => {
         dark: darkMode ? '#181818' : '#006690',
         paper: darkMode ? '#232323' : '#FFF'
       },
-      backgroundImage: 'linear-gradient(45deg, #006600 30%, #FF8E53 96%)'
+      backgroundImage: 'linear-gradient(45deg, #006600 30%, #FF8E53 96%)',
+      MuiUseMediaQuery: {
+        // Change the default options of useMediaQuery
+        defaultProps: { ssrMatchMedia }
+      }
     }
   })
   return (

@@ -7,17 +7,21 @@ import {
   Card,
   CardContent,
   Paper,
+  Grid,
   Divider,
   Typography
 } from '@mui/material'
 import { makeStyles } from '@material-ui/core'
+import { FloatingLabel, Form } from 'react-bootstrap'
 
 import dayjs from 'dayjs'
 import MailIcon from '@material-ui/icons/Event'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import PublicIcon from '@material-ui/icons/Public'
+import TextareaAutosize from '@mui/material/TextareaAutosize'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
+import '../../index.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,14 +55,11 @@ const KnowMore = (props) => {
             padding: '2%'
           }}>
           <Divider style={{ backgroundColor: 'black', marginBottom: '15px' }} />
-          <Paper
-            elevation={5}
-            style={{ display: 'grid', position: 'relative' }}>
+          <Paper elevation={5} style={{ display: 'grid' }}>
             <Card
               key={state.data.title}
               style={{
-                backgroundColor: 'rgb(13, 74, 40)',
-                minHeight: '600px'
+                backgroundColor: 'rgb(13, 74, 40)'
               }}>
               <CardContent>
                 <div
@@ -71,15 +72,23 @@ const KnowMore = (props) => {
                   }}>
                   <div className="col-md-4">
                     <img
+                      style={{
+                        height: 'auto',
+                        width: '100%',
+                        textAlign: 'center'
+                      }}
+                      className="image"
                       alt={state.data.rg_title}
                       src={`${endpoint.UserBaseUrl}/events/image/${state?.data?.rg_document}`}
                       ref={customerLogo}
-                      height="450px"
-                      width="450px"
-                      style={{ textAlign: 'center' }}
                     />
                   </div>
-                  <div className="col-md-8 b">
+                  <div
+                    className="col-md-8 b"
+                    // style={{
+                    //   marginLeft: '-55px'
+                    // }}
+                  >
                     <Typography
                       variant="h4"
                       style={{
@@ -90,14 +99,39 @@ const KnowMore = (props) => {
                       gutterBottom>
                       {state.data.rg_title}
                     </Typography>
+                    {/* <FloatingLabel
+                      controlId="floatingTextarea2"
+                      label="Comments">
+                      <Form.Control
+                        as="textarea"
+                        disabled
+                        placeholder={() => state.data.rg_description}
+                        style={{ height: '100px', color: 'black' }}
+                      />
+                    </FloatingLabel> */}
+                    {/* <TextareaAutosize
+                      aria-label="minimum height"
+                      minRows={3}
+                      disabled
+                      defaultValue={state.data.rg_description}
+                      style={{
+                        width: '100%',
+                        backgroundColor: 'rgb(13, 74, 40)',
+                        borderColor: 'rgb(13, 74, 40)',
+                        color: '#fff !important'
+                      }}
+                    /> */}
                     <Typography
                       display="block"
                       variant="body1"
                       style={{
                         textAlign: 'justify',
-                        width: '100%',
-                        fontWeight: 600,
-                        color: 'white'
+
+                        // fontWeight: 600,
+                        color: 'white',
+                        // // marginLeft: '-23px',
+                        // width: '100%',
+                        wordWrap: 'break-word'
                       }}>
                       {state.data.rg_description}
                     </Typography>
@@ -177,7 +211,7 @@ const KnowMore = (props) => {
                         <div className="col-md-10 text-left">
                           <Typography
                             variant="body1"
-                            style={{ color: 'white' }}>
+                            style={{ color: 'white', wordWrap: 'break-word' }}>
                             <li>
                               <a href={state.data.rg_site}>
                                 {state.data.rg_site}

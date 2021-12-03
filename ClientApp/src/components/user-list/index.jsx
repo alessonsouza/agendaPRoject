@@ -492,9 +492,9 @@ export default function EnhancedTable () {
                   // className="ml-25 mt-2"
                   size="large"
                   style={{
-                    backgroundColor: '#005128',
-                    bottom: '50px',
-                    left: '30px'
+                    backgroundColor: '#005128'
+                    // bottom: '50px',
+                    // left: '30px'
                   }}
                   onClick={() => HandleEvents()}>
                   <Icon
@@ -508,9 +508,9 @@ export default function EnhancedTable () {
                   // className="ml-25 mt-2"
                   size="large"
                   style={{
-                    backgroundColor: '#f5781e',
-                    bottom: '50px',
-                    left: '34px'
+                    backgroundColor: '#f5781e'
+                    // bottom: '50px',
+                    // left: '34px'
                   }}
                   onClick={() => HandleRender(true)}
                   // onClick={AceitarTermo}
@@ -526,15 +526,12 @@ export default function EnhancedTable () {
               </div>
             </CardContent>
           </Card>
-          <Card style={{ marginBottom: '15px', height: '600px' }}>
+          <Card style={{ marginBottom: '15px' }}>
             <CardContent>
               <Paper sx={{ width: '100%', mb: 2, height: '100%' }}>
                 {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
                 <TableContainer>
-                  <Table
-                    sx={{ minWidth: 750 }}
-                    aria-labelledby="tableTitle"
-                    size="medium">
+                  <Table aria-labelledby="tableTitle" size="medium">
                     <EnhancedTableHead
                       numSelected={selected.length}
                       order={order}
@@ -554,7 +551,6 @@ export default function EnhancedTable () {
                             page * rowsPerPage + rowsPerPage
                           )
                           .map((row, index) => {
-                            const isItemSelected = isSelected(row.auth_name)
                             const labelId = `enhanced-table-checkbox-${index}`
                             let statusColor
                             let statusType
@@ -576,10 +572,8 @@ export default function EnhancedTable () {
                               <TableRow
                                 hover
                                 role="checkbox"
-                                aria-checked={isItemSelected}
                                 tabIndex={-1}
-                                key={row.idauth}
-                                selected={isItemSelected}>
+                                key={row.idauth}>
                                 <TableCell
                                   component="th"
                                   id={labelId}
@@ -639,8 +633,8 @@ export default function EnhancedTable () {
                                     <Icon
                                       path={mdiBorderColor}
                                       style={{
-                                        color: '#005128',
-                                        bottom: '50px'
+                                        color: '#005128'
+                                        // bottom: '50px'
                                         // left: '30px'
                                       }}
                                       title="Editar"

@@ -69,7 +69,7 @@ namespace AgendaEventos.Models
                     whereClause = "where ";
                     conn.CommandText += whereClause;
                 }
-                conn.CommandText += "rg_date_begin >= '" + obj.rg_date_begin.ToString("yyyy-MM-dd HH:mm") + "'";
+                conn.CommandText += "rg_date_begin >= '" + obj.rg_date_begin.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                 // conn.Parameters.AddWithValue("@rg_date_begin", obj.rg_date_begin);
             }
 
@@ -85,7 +85,7 @@ namespace AgendaEventos.Models
                     whereClause = "where ";
                     conn.CommandText += whereClause;
                 }
-                conn.CommandText += "rg_date_end <= '" + obj.rg_date_end.ToString("yyyy-MM-dd HH:mm") + "'";
+                conn.CommandText += "rg_date_end <= '" + obj.rg_date_end.ToString("yyyy-MM-dd HH:mm:ss") + "'";
                 // conn.Parameters.AddWithValue("@rg_date_end", obj.rg_date_end);
             }
 

@@ -507,7 +507,7 @@ import Rotas from './rotas'
 
 import '../assets/css/unimed.css'
 
-const drawerWidth = 240
+const drawerWidth = 160
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -556,9 +556,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
+    width: theme.spacing(3.5) + 1,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(8) + 1
+      width: theme.spacing(5) + 1
     },
     backgroundColor: '#006600'
   },
@@ -572,15 +572,18 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     color: 'secondary'
   },
+  main: {
+    paddingLeft: theme.spacing(1)
+  },
   nested: {
-    paddingLeft: theme.spacing(3),
+    paddingLeft: theme.spacing(1),
     backgroundColor: '#fff'
   },
   nested2: {
-    paddingLeft: theme.spacing(5),
+    paddingLeft: theme.spacing(4),
     backgroundColor: '#fff'
   }
 }))
@@ -650,7 +653,7 @@ export default function MiniDrawer(props) {
       // eslint-disable-next-line multiline-ternary
       return text.children ? (
         <>
-          <ListItem button onClick={handleClick}>
+          <ListItem key={text.title} className={classes.main} button onClick={handleClick}>
             <ListItemIcon>{text.icon}</ListItemIcon>
             <ListItemText primary={text.title} />
           </ListItem>
@@ -679,7 +682,7 @@ export default function MiniDrawer(props) {
           </Collapse>
         </>
       ) : (
-        <ListItem component={Link} to={text.path} button key={text.title}>
+        <ListItem component={Link} className={classes.main} to={text.path} button key={text.title}>
           <ListItemIcon>{text.icon}</ListItemIcon>
           <ListItemText primary={text.title} />
         </ListItem>
@@ -692,7 +695,7 @@ export default function MiniDrawer(props) {
     <div className={` ${classes.root}`}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+
         className={clsx(
           classes.appBar,
           {

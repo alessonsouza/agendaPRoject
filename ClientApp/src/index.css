@@ -11,5 +11,34 @@ body {
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(yellow 10%, yellow 2%, green 92%) !important;
+  background-image: radial-gradient(yellow 10%, yellow 2%, green 92%) !important;  
+}
+.css-10nakn3-MuiModal-root-MuiPopover-root-MuiMenu-root .css-1sucic {
+  position: inherit !important;
+}
+
+.css-1sucic7 {
+  position: inherit !important;
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 10px;
+    padding-right: 1%;
+    margin-top: -40px;
+    margin-left: 20px;
+    text-align: justify;
+  };
+  div {
+      width: 5%;
+  };
+   .datas {
+    margin-left: -35px;
+    bottom: 8%;
+    left: -27%;
+  };
+  .image {
+    height: 40px !important;
+    width: 50px !important;
+  };  
 }

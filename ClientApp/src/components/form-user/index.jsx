@@ -166,7 +166,9 @@ const User = (props) => {
     }
 
     if (resp?.data?.success) {
-      storage.image = dadosUpload
+      if (storage.name === campos.auth_name) {
+        storage.image = dadosUpload
+      }
       TokenAPI.setToken(storage)
       setDadosUpload(null)
       // props.handleClose(true)

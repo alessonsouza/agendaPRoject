@@ -32,7 +32,7 @@ function FileList () {
   return (
     <Container>
       {files.map((uploadedFile: IFile) => (
-        <li key={uploadedFile.id}>
+        uploadedFile.FileName === dadosUpload && <li key={uploadedFile.id}>
           <FileInfo>
             <Preview src={uploadedFile.preview} />
             <div>
@@ -80,7 +80,8 @@ function FileList () {
             {uploadedFile.error && <MdError size={24} color="#e57878" />}
           </div>
         </li>
-      ))}
+      )
+      )}
 
      {(dadosUpload && !files?.length) && <li>
        <FileInfo>

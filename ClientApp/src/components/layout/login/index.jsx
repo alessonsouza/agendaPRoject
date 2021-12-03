@@ -44,10 +44,12 @@ const Layout = () => {
   const submitForm = async (values) => {
     setIsLoading(true)
 
-    setLoginData(values)
     const senhaMd5 = CryptoJS.MD5(`{uni${values.password}med}`).toString()
-    values.password = senhaMd5
-    const result = await AuthAPI.autenticate(values)
+
+    const obj = { ...values }
+    obj.password = senhaMd5
+    const result = await AuthAPI.autenticate(obj)
+    setLoginData(values)
     setSuccessLogin(result.success)
     setDadosUser(result.data?.user)
     if (result.success === false) {

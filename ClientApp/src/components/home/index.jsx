@@ -24,6 +24,7 @@ import KnowMore from '../saibaMais'
 import AllEvents from '../todosEventos'
 import 'react-multi-carousel/lib/styles.css'
 import '../../assets/css/unimed.css'
+import '../../index.css'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
 // eslint-disable-next-line no-multi-assign
@@ -92,11 +93,6 @@ const Home = () => {
     }
   }
 
-  const alterClass = () => {
-    $(document).ready(() => {
-      $('alesson').removeClass('position-absolute')
-    })
-  }
   const HandleTypeRender = () => {
     let html
     switch (showType) {
@@ -139,7 +135,6 @@ const Home = () => {
         )
         break
       case 'saibamais':
-        alterClass()
         // $('alesson').addClass('position-relative')
         html = <KnowMore data={event} HandleShow={HandleShow} />
         break
@@ -163,8 +158,7 @@ const Home = () => {
           <Box
             style={{
               backgroundColor: '#7fffd43b',
-              width: '100%',
-              minHeight: '580px'
+              width: '100%'
             }}>
             <Paper elevation={5} style={{ height: '100%', display: 'grid' }}>
               <Card
@@ -179,7 +173,7 @@ const Home = () => {
                     alt={item.rg_title}
                     src={`${endpoint.UserBaseUrl}/events/image/${item?.rg_document}`}
                     ref={customerLogo}
-                    height="400px"
+                    height="380px"
                   />
 
                   <div className="col-md-12 b">
@@ -195,13 +189,14 @@ const Home = () => {
                     </Typography>
                   </div>
                   <div
-                    className="row"
-                    style={{
-                      position: 'absolute',
-                      marginLeft: '-80px',
-                      bottom: '8%',
-                      left: '15%'
-                    }}>
+                    className="row datas"
+                    // style={{
+                    //   position: 'absolute',
+                    //   marginLeft: '-80px',
+                    //   bottom: '8%',
+                    //   left: '15%'
+                    // }}
+                  >
                     <div className="col-md-1 cor-laranja">
                       <MailIcon />
                     </div>
@@ -279,7 +274,7 @@ const Home = () => {
                 style={{ backgroundColor: '#f5781e' }}>
                 <ChevronLeftIcon className={classes.listItemText} />
                 <Typography style={{ fontSize: '12px' }}>
-                  <b>Voltar</b>
+                  <b>Home</b>
                 </Typography>
               </Fab>
             )}
