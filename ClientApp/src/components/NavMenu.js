@@ -505,7 +505,7 @@ import { UploadContext } from '../lib/context/upload-context'
 import endpoint from '../endpoints.config'
 import Rotas from './rotas'
 
-import '../assets/css/unimed.css'
+import '../assets/css/colors.css'
 
 const drawerWidth = 160
 
@@ -701,7 +701,7 @@ export default function MiniDrawer(props) {
           {
             [classes.appBarShift]: open
           },
-          'bg-verde-unimed'
+          'bg-verde-agenda'
         )}>
         <div className="row">
           <Toolbar>
@@ -719,13 +719,6 @@ export default function MiniDrawer(props) {
                 </IconButton>
               )}
             </div>
-            {/* <img
-          alt="Unimed Chapecó"
-          src="https://unimedchapeco.coop.br/assets/img/logo_110_51.png"
-        /> */}
-            {/* <Typography variant="h6" noWrap>
-            Eventos
-          </Typography> */}
             <div className="col-md-6 text-end">
               <Button
                 ref={anchorRef}

@@ -23,7 +23,7 @@ import APIEventos from '../../lib/api/eventos'
 import KnowMore from '../saibaMais'
 import AllEvents from '../todosEventos'
 import 'react-multi-carousel/lib/styles.css'
-import '../../assets/css/unimed.css'
+import '../../assets/css/colors.css'
 import '../../index.css'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
@@ -247,13 +247,6 @@ const Home = () => {
     <div className={classes.root}>
       <Box>
         <Box p={2}>
-          <div className="text-center">
-            <img
-              width="100px"
-              alt="Unimed Chapecó"
-              src="https://unimedchapeco.coop.br/assets/img/logo_110_51.png"
-            />
-          </div>
           <div>
             <Typography
               variant="h4"
@@ -262,7 +255,7 @@ const Home = () => {
                 color: 'white',
                 textAlign: 'center'
               }}>
-              Eventos Unimed Chapecó
+              Eventos
             </Typography>
           </div>
           <div className="col-md-12 text-end">

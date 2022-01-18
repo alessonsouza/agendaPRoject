@@ -30,7 +30,7 @@ import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import APIEventos from '../../lib/api/eventos'
 import 'react-multi-carousel/lib/styles.css'
-import '../../assets/css/unimed.css'
+import '../../assets/css/colors.css'
 import './index.css'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
