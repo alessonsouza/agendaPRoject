@@ -6,15 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import Select from '@material-ui/core/Select'
 import { makeStyles } from '@material-ui/core/styles'
-import Icon from '@mdi/react'
-import { mdiFormatListBulleted } from '@mdi/js'
 // import { IconButton } from '@material-ui/core';
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  IconButton
-} from '@material-ui/core'
 // import SearchField from '../searchField'
 
 const useStyles = makeStyles((theme) => ({

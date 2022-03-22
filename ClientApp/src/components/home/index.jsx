@@ -23,7 +23,7 @@ import APIEventos from '../../lib/api/eventos'
 import KnowMore from '../saibaMais'
 import AllEvents from '../todosEventos'
 import 'react-multi-carousel/lib/styles.css'
-import '../../assets/css/colors.css'
+import '../../assets/css/unimed.css'
 import '../../index.css'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
@@ -171,7 +171,7 @@ const Home = () => {
                 <div className="row">
                   <img
                     alt={item.rg_title}
-                    src={`${endpoint.UserBaseUrl}/events/image/${item?.rg_document}`}
+                    src={`${process.env.REACT_APP_API_URL}/events/image/${item?.rg_document}`}
                     ref={customerLogo}
                     height="380px"
                   />
@@ -197,12 +197,32 @@ const Home = () => {
                     //   left: '15%'
                     // }}
                   >
+                    <div className="col-md-1 cor-laranja text-end">
+                      <Typography variant="body1">
+                        <b>De:</b>
+                      </Typography>
+                    </div>
                     <div className="col-md-1 cor-laranja">
                       <MailIcon />
                     </div>
-                    <div className="col-md-11 text-left">
+                    <div className="col-md-10 text-left">
                       <Typography variant="body2" style={{ color: 'white' }}>
-                        {`• ${dayjs(item.rg_date_begin).format(
+                        {` ${dayjs(item.rg_date_begin).format(
+                          'DD/MM/YYYY HH:mm'
+                        )}`}
+                      </Typography>
+                    </div>
+                    <div className="col-md-1 cor-laranja text-end">
+                      <Typography variant="body1">
+                        <b>Até:</b>
+                      </Typography>
+                    </div>
+                    <div className="col-md-1 cor-laranja">
+                      <MailIcon />
+                    </div>
+                    <div className="col-md-10 text-left">
+                      <Typography variant="body2" style={{ color: 'white' }}>
+                        {`${dayjs(item.rg_date_end).format(
                           'DD/MM/YYYY HH:mm'
                         )}`}
                       </Typography>
@@ -212,7 +232,7 @@ const Home = () => {
                     </div>
                     <div className="col-md-10 text-left">
                       <Typography variant="body2" style={{ color: 'white' }}>
-                        {`• ${item.rg_local}`}
+                        {`${item.rg_local}`}
                       </Typography>
                     </div>
                   </div>
@@ -247,6 +267,13 @@ const Home = () => {
     <div className={classes.root}>
       <Box>
         <Box p={2}>
+          <div className="text-center">
+            <img
+              width="100px"
+              alt="Unimed Chapecó"
+              src="https://unimedchapeco.coop.br/assets/img/logo_110_51.png"
+            />
+          </div>
           <div>
             <Typography
               variant="h4"
@@ -255,7 +282,7 @@ const Home = () => {
                 color: 'white',
                 textAlign: 'center'
               }}>
-              Eventos
+              Eventos Unimed Chapecó
             </Typography>
           </div>
           <div className="col-md-12 text-end">

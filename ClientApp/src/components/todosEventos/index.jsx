@@ -8,8 +8,7 @@ import {
   Fab,
   Card,
   Divider,
-  Paper,
-  CardContent
+  Paper
 } from '@material-ui/core'
 
 import {
@@ -17,11 +16,9 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TablePagination,
   TableRow
 } from '@mui/material'
-import { visuallyHidden } from '@mui/utils'
 
 import MailIcon from '@material-ui/icons/Event'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
@@ -30,7 +27,7 @@ import dayjs from 'dayjs'
 import timezone from 'dayjs/plugin/timezone'
 import APIEventos from '../../lib/api/eventos'
 import 'react-multi-carousel/lib/styles.css'
-import '../../assets/css/colors.css'
+import '../../assets/css/unimed.css'
 import './index.css'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
@@ -392,7 +389,7 @@ const AllEvents = (props) => {
                                     <img
                                       alt={row.rg_title}
                                       // eslint-disable-next-line max-len
-                                      src={`${endpoint.UserBaseUrl}/events/image/${row?.rg_document}`}
+                                      src={`${process.env.REACT_APP_API_URL}/events/image/${row?.rg_document}`}
                                       ref={customerLogo}
                                       height="180px"
                                       width="180px"

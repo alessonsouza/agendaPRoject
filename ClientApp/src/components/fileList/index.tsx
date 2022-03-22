@@ -86,7 +86,7 @@ function FileList () {
      {(dadosUpload && !files?.length) && <li>
        <FileInfo>
       <Preview
-      src={`${endpoint.UserBaseUrl}/events/image/${dadosUpload}`} />
+      src={`http://192.168.2.240:8094/events/image/${dadosUpload}`} />
               <strong>{dadosUpload}</strong>
             </FileInfo>
       </li>}

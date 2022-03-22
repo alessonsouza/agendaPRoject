@@ -22,7 +22,7 @@ function Layout(props) {
           width: '100%',
           height: '100%'
         }}>
-        <NavMenu />
+        {/* <NavMenu /> */}
         <Container
           style={{ maxWidth: '96%', marginLeft: '3%' }}>
           <Row>

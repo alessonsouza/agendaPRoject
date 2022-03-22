@@ -38,7 +38,7 @@ const Layout = () => {
   const [successLogin, setSuccessLogin] = useState(false)
   const [errorLogin, setErrorLogin] = useState({})
 
-  const { setIsLoading } = useContext(LoaderContext)
+  const { setIsLoading, setEstaAutenticado } = useContext(LoaderContext)
   const { setDadosUser } = useContext(AuthContext)
 
   const submitForm = async (values) => {
@@ -55,6 +55,7 @@ const Layout = () => {
     if (result.success === false) {
       setErrorLogin(result)
     }
+    setEstaAutenticado(result.success)
     setIsLoading(false)
   }
 
@@ -66,7 +67,6 @@ const Layout = () => {
           )
         : (
         <>
-          <Header />
           <div className="container">
             <div className="h-100 d-flex justify-content-center align-items-center">
               <Box className="form-login">

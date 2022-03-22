@@ -37,8 +37,7 @@ import {
   TextField,
   Fab,
   IconButton,
-  Tooltip,
-  Stack
+  Tooltip
 } from '@mui/material'
 import { visuallyHidden } from '@mui/utils'
 // import Badge from '@material-ui/core/Badge'
@@ -57,8 +56,6 @@ import MuiAlert from '@material-ui/lab/Alert'
 import { Snackbar } from '@material-ui/core'
 
 import { mdiMagnify, mdiPlus, mdiBorderColor, mdiDelete } from '@mdi/js'
-import { withStyles } from '@material-ui/core/styles'
-import styled from 'styled-components'
 import Form from '../form'
 import APIEventos from '../../lib/api/eventos'
 import { UploadContext } from '../../lib/context/upload-context'
@@ -396,9 +393,9 @@ export default function EnhancedTable () {
   const HandleRender = (value) => {
     // HandleEvents()
 
-    if (value === false) {
-      window.location.reload()
-    }
+    // if (value === false) {
+    //   window.location.reload()
+    // }
     setChageRender(value)
     console.log(changeRender)
   }

@@ -7,18 +7,15 @@ import {
   Card,
   CardContent,
   Paper,
-  Grid,
   Divider,
   Typography
 } from '@mui/material'
 import { makeStyles } from '@material-ui/core'
-import { FloatingLabel, Form } from 'react-bootstrap'
 
 import dayjs from 'dayjs'
 import MailIcon from '@material-ui/icons/Event'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import PublicIcon from '@material-ui/icons/Public'
-import TextareaAutosize from '@mui/material/TextareaAutosize'
 // eslint-disable-next-line import/no-unresolved
 import endpoint from '../../endpoints.config'
 import '../../index.css'
@@ -79,7 +76,8 @@ const KnowMore = (props) => {
                       }}
                       className="image"
                       alt={state.data.rg_title}
-                      src={`${endpoint.UserBaseUrl}/events/image/${state?.data?.rg_document}`}
+                      // eslint-disable-next-line max-len
+                      src={`${process.env.REACT_APP_API_URL}/events/image/${state?.data?.rg_document}`}
                       ref={customerLogo}
                     />
                   </div>
@@ -163,7 +161,7 @@ const KnowMore = (props) => {
                     </div>
                     <div className="col-md-10 text-left">
                       <Typography variant="body1" style={{ color: 'white' }}>
-                        {`• ${dayjs(state.data.rg_date_begin).format(
+                        {`${dayjs(state.data.rg_date_begin).format(
                           'DD/MM/YYYY HH:mm'
                         )}`}
                       </Typography>
@@ -178,7 +176,7 @@ const KnowMore = (props) => {
                     </div>
                     <div className="col-md-10 text-left">
                       <Typography variant="body1" style={{ color: 'white' }}>
-                        {`• ${dayjs(state.data.rg_date_begin).format(
+                        {`${dayjs(state.data.rg_date_end).format(
                           'DD/MM/YYYY HH:mm'
                         )}  `}
                       </Typography>
@@ -194,7 +192,7 @@ const KnowMore = (props) => {
                     </div>
                     <div className="col-md-10 text-left">
                       <Typography variant="body1" style={{ color: 'white' }}>
-                        {`• ${state.data.rg_local}`}
+                        {`${state.data.rg_local}`}
                       </Typography>
                     </div>
                     {state.data.rg_site && (

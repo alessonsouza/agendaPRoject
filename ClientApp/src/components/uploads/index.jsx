@@ -22,6 +22,7 @@ function Upload () {
         'image/pjpeg',
         'image/png',
         'image/gif',
+        'image/jfif',
         'image/jpg'
       ],
       onDrop

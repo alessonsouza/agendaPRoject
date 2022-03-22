@@ -385,9 +385,9 @@ export default function EnhancedTable () {
   const HandleRender = (value) => {
     // HandleEvents()
 
-    if (value === false) {
-      window.location.reload()
-    }
+    // if (value === false) {
+    //   window.location.reload()
+    // }
     setChageRender(value)
     console.log(changeRender)
   }
