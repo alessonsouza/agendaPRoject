@@ -12,6 +12,14 @@ RUN apt-get update && apt-get install -qqy git unzip libfreetype6-dev \
     && apt-get autoremove --yes \
     &&  rm -rf /var/lib/{apt,dpkg,cache,log}/ 
 
+
+RUN apt-get update && \
+    apt-get install -yq tzdata && \
+    ln -fs /usr/share/zoneinfo/America/America/Sao_Paulo /etc/localtime && \
+    dpkg-reconfigure -f noninteractive tzdata
+
+ENV TZ="America/Sao_Paulo"
+
 # ORACLE oci 
 RUN mkdir /opt/oracle \
     && cd /opt/oracle     

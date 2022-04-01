@@ -61,6 +61,7 @@ namespace AgendaEventos
             services.AddHttpContextAccessor();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IEvents, EventsService>();
+            services.AddScoped<IUser, UserSeniorService>();
             services.AddScoped<IPassword, PasswordService>();
 
             services.AddCors();

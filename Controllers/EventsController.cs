@@ -152,9 +152,12 @@ namespace AgendaEventos.Controllers
             try
             {
                 string wwwRootPath = _webHostEnvironment.WebRootPath + @"/Image/";
-                // byte[] resp = System.IO.File.ReadAllBytes(wwwRootPath + fileName);
+                // byte[] resp = System.IO.File.ReadAllBytes(wwwRootPath + fileName);                
                 byte[] resp = System.IO.File.ReadAllBytes("Image/" + fileName);
-                return File(resp, "image/png");
+
+                var extension = Path.GetExtension(wwwRootPath + fileName);
+                Console.WriteLine(extension);
+                return File(resp, "image/" + extension.Replace(".", ""));
 
             }
             catch (Exception e)
